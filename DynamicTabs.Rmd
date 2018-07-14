@@ -1,0 +1,44 @@
+---
+title: "Dynamic Tabs"
+author: "Mark Gingrass"
+date: "`r Sys.Date()`"
+output:
+ html_document:
+   df_print: paged
+   toc: yes
+   toc_depth: '3'
+ html_notebook:
+   code_folding: hide
+   theme: united
+   toc: yes
+   toc_depth: 3
+   toc_float: yes
+keep_md: TRUE
+---
+<iframe width="560" height="315" src="https://youtube.com/embed/KMTWjPLEolc" frameborder="0" allowfullscreen></iframe>
+
+### Header 1
+Talk about this data here. 
+```{r}
+library(ggplot2)
+my_data <- mtcars
+
+p_list <- list()
+
+p1 <- qplot(mpg, disp, data = my_data[1:10,])
+p2 <- qplot(disp, mpg, data = my_data[10:20,])
+
+p_list[[1]] <- list(p1, "First Plot")
+p_list[[2]] <- list(p2, "Second Plot")
+```
+
+
+### Top MICAPS by Vendor  {.tabset}
+```{r, results='asis', echo = FALSE}
+for (i in seq_along(p_list)){
+ tmp <- p_list[[i]]
+ cat("####", tmp[[2]], " \n")
+ print(tmp[1])
+ cat(' \n\n')
+}
+```

@@ -2901,6 +2901,8 @@ div.tocify {
 
 
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
 <iframe width="560" height="315" src="https://youtube.com/embed/KMTWjPLEolc" frameborder="0" allowfullscreen>
 </iframe>
 <div id="header" class="section level3">
@@ -2908,18 +2910,6 @@ div.tocify {
 <p>Talk about this data here.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubXlfZGF0YSA8LSBtdGNhcnNcblxucF9saXN0IDwtIGxpc3QoKVxuXG5wMSA8LSBxcGxvdChtcGcsIGRpc3AsIGRhdGEgPSBteV9kYXRhWzE6MTAsXSlcbnAyIDwtIHFwbG90KGRpc3AsIG1wZywgZGF0YSA9IG15X2RhdGFbMTA6MjAsXSlcblxucF9saXN0W1sxXV0gPC0gbGlzdChwMSwgXFxGaXJzdCBQbG90XFwpXG5wX2xpc3RbWzJdXSA8LSBsaXN0KHAyLCBcXFNlY29uZCBQbG90XFwpXG5gYGAifQ== -->
-<pre class="r"><code>library(ggplot2)
-my_data &lt;- mtcars
-
-p_list &lt;- list()
-
-p1 &lt;- qplot(mpg, disp, data = my_data[1:10,])
-p2 &lt;- qplot(disp, mpg, data = my_data[10:20,])
-
-p_list[[1]] &lt;- list(p1, \First Plot\)
-p_list[[2]] &lt;- list(p2, \Second Plot\)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -2936,7 +2926,7 @@ p_list[[2]] &lt;- list(p2, \Second Plot\)</code></pre>
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkR5bmFtaWMgVGFicyINCmF1dGhvcjogIk1hcmsgR2luZ3Jhc3MiDQpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiDQpvdXRwdXQ6DQogaHRtbF9kb2N1bWVudDoNCiAgIGRmX3ByaW50OiBwYWdlZA0KICAgdG9jOiB5ZXMNCiAgIHRvY19kZXB0aDogJzMnDQogaHRtbF9ub3RlYm9vazoNCiAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgdGhlbWU6IHVuaXRlZA0KICAgdG9jOiB5ZXMNCiAgIHRvY19kZXB0aDogMw0KICAgdG9jX2Zsb2F0OiB5ZXMNCmtlZXBfbWQ6IFRSVUUNCi0tLQ0KDQo8aWZyYW1lIHdpZHRoPSI1NjAiIGhlaWdodD0iMzE1IiBzcmM9Imh0dHBzOi8veW91dHViZS5jb20vZW1iZWQvS01UV2pQTEVvbGMiIGZyYW1lYm9yZGVyPSIwIiBhbGxvd2Z1bGxzY3JlZW4+PC9pZnJhbWU+DQoNCiMjIyBIZWFkZXIgDQoNClRhbGsgYWJvdXQgdGhpcyBkYXRhIGhlcmUuIA0KDQpgYGB7cn0NCmxpYnJhcnkoZ2dwbG90MikNCm15X2RhdGEgPC0gbXRjYXJzDQoNCnBfbGlzdCA8LSBsaXN0KCkNCg0KcDEgPC0gcXBsb3QobXBnLCBkaXNwLCBkYXRhID0gbXlfZGF0YVsxOjEwLF0pDQpwMiA8LSBxcGxvdChkaXNwLCBtcGcsIGRhdGEgPSBteV9kYXRhWzEwOjIwLF0pDQoNCnBfbGlzdFtbMV1dIDwtIGxpc3QocDEsICJGaXJzdCBQbG90IikNCnBfbGlzdFtbMl1dIDwtIGxpc3QocDIsICJTZWNvbmQgUGxvdCIpDQpgYGANCg0KDQojIyMgVG9wIE1JQ0FQUyBieSBWZW5kb3IgIHsudGFic2V0fQ0KDQpgYGB7ciwgcmVzdWx0cz0nYXNpcycsIGVjaG8gPSBGQUxTRX0NCmZvciAoaSBpbiBzZXFfYWxvbmcocF9saXN0KSl7DQogdG1wIDwtIHBfbGlzdFtbaV1dDQogY2F0KCIjIyMjIiwgdG1wW1syXV0sICIgXG4iKQ0KIHByaW50KHRtcFsxXSkNCiBjYXQoJyBcblxuJykNCn0NCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkR5bmFtaWMgVGFicyINCmF1dGhvcjogIk1hcmsgR2luZ3Jhc3MiDQpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiDQpvdXRwdXQ6DQogaHRtbF9kb2N1bWVudDoNCiAgIGRmX3ByaW50OiBwYWdlZA0KICAgdG9jOiB5ZXMNCiAgIHRvY19kZXB0aDogJzMnDQogaHRtbF9ub3RlYm9vazoNCiAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgdGhlbWU6IHVuaXRlZA0KICAgdG9jOiB5ZXMNCiAgIHRvY19kZXB0aDogMw0KICAgdG9jX2Zsb2F0OiB5ZXMNCmtlZXBfbWQ6IFRSVUUNCi0tLQ0KDQpgYGB7ciBlbnZpcm9tZW50LCBpbmNsdWRlPUZBTFNFfQ0KIyBsaWJyYXJpZXMNCiAgbGlicmFyeSh0aWR5dmVyc2UpDQogIGxpYnJhcnkobHVicmlkYXRlKQ0KICBsaWJyYXJ5KGphZ3NVSSkNCiAgbGlicmFyeShrbml0cikNCiAgbGlicmFyeShncmlkRXh0cmEpDQogIGxpYnJhcnkoZXh0cmFmb250KQ0KICBsaWJyYXJ5KGdkYXRhKQ0KDQojIHNvcnRpbmcgZm9udHMNCiAgd2luZG93c0ZvbnRzKCkNCiAgbG9hZGZvbnRzKGRldmljZSA9ICJ3aW4iKQ0KICANCiMgdGhpcyBqdXN0IHNpbXBseSByZWR1Y2VzIGxvbmcgbmFtZSB0byBUSU1FUyBhcyBpbiBjb2RlIGJlbG93DQogIHdpbmRvd3NGb250cyhUaW1lcz13aW5kb3dzRm9udCgiVFQgVGltZXMgTmV3IFJvbWFuIikpIA0KICANCiMgZGV2dG9vbHM6Omluc3RhbGxfZ2l0aHViKCJjYm9ldHRpZy9rbml0Y2l0YXRpb25zQHYxIikNCiAgbGlicmFyeShrbml0Y2l0YXRpb25zKTsgY2xlYW5iaWIoKQ0KICBjaXRlX29wdGlvbnMoY2l0YXRpb25fZm9ybWF0ID0gInBhbmRvYyIsIGNoZWNrLmVudHJpZXM9RkFMU0UpDQogIGxpYnJhcnkoYmlidGV4KQ0KbGlicmFyeShnZ3Bsb3QyKQ0KYGBgDQoNCjxpZnJhbWUgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMTUiIHNyYz0iaHR0cHM6Ly95b3V0dWJlLmNvbS9lbWJlZC9LTVRXalBMRW9sYyIgZnJhbWVib3JkZXI9IjAiIGFsbG93ZnVsbHNjcmVlbj48L2lmcmFtZT4NCg0KIyMjIEhlYWRlciANCg0KVGFsayBhYm91dCB0aGlzIGRhdGEgaGVyZS4gDQoNCmBgYHtyIGVjaG8gPSBGQUxTRX0NCm15X2RhdGEgPC0gbXRjYXJzDQpwX2xpc3QgPC0gbGlzdCgpDQoNCnAxIDwtIHFwbG90KG1wZywgZGlzcCwgZGF0YSA9IG15X2RhdGFbMToxMCxdKQ0KcDIgPC0gcXBsb3QoZGlzcCwgbXBnLCBkYXRhID0gbXlfZGF0YVsxMDoyMCxdKQ0KDQpwX2xpc3RbWzFdXSA8LSBsaXN0KHAxLCAiRmlyc3QgUGxvdCIpDQpwX2xpc3RbWzJdXSA8LSBsaXN0KHAyLCAiU2Vjb25kIFBsb3QiKQ0KYGBgDQoNCg0KIyMjIFRvcCBNSUNBUFMgYnkgVmVuZG9yICB7LnRhYnNldH0NCg0KYGBge3IsIHJlc3VsdHM9J2FzaXMnLCBlY2hvID0gRkFMU0V9DQpmb3IgKGkgaW4gc2VxX2Fsb25nKHBfbGlzdCkpew0KIHRtcCA8LSBwX2xpc3RbW2ldXQ0KIGNhdCgiIyMjIyIsIHRtcFtbMl1dLCAiIFxuIikNCiBwcmludCh0bXBbMV0pDQogY2F0KCcgXG5cbicpDQp9DQpgYGA=</div>
 
 
 </div>
@@ -2985,7 +2975,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("DynamicTabs.Rmd");
+  window.initializeSourceEmbed("DynamicTabs-mpd.Rmd");
   window.initializeCodeFolding("hide" === "show");
 });
 </script>

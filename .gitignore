@@ -1,3 +1,5 @@
+#my standard git ignore
+
 .Rproj.user
 .Rhistory
 .RData

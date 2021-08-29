@@ -1,0 +1,150 @@
+---
+title: "GED dynamic tabs example"
+author: "Anthony Davidson, Emily Stringer and Mark Gingrass (original content)"
+date: "`r Sys.Date()`"
+output:
+   bookdown::html_document2:
+      theme: journal
+      highlight: tango
+      df_print: paged
+      toc: yes
+      toc_depth: '3'
+keep_md: TRUE
+---
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+library(DT)
+library(tidyverse)
+ged.min <- read.csv("data/random_ged_resample.csv") %>%
+            mutate(site = factor(site))
+
+levels(ged.min$site)
+```
+
+# Overview {.tabset}
+
+Here are some old notes I found for creating dynamic tabs for a collection of sites. I have added notes to this document with a set of examples using the same site names but different data (just in case).
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+ ppt <- ggplot(ged.min, aes(y = n, x = year, group = paste(site, year))) +
+        geom_point() +
+        geom_line() +
+        facet_wrap(~site, scales = "free", ncol =2 ) +
+        theme_bw()+ 
+     theme(axis.text.x = element_text(angle = 90))
+
+ppt
+```
+
+## Dynamic tabs
+
+Dynamic tabs are an easy way to add a single dynamic component that does not require a server to support (e.g. Shiny apps). Dynamic tabs are controlled by creating a stored list of objects (in this case ggplots) using the following code after the desired heading `{.tabset}`. An extension of this is the style aspects attached to the tab using `{.tabset .tabpills}`.
+
+## Insert iframe
+
+This quick little shortcut helps with including dynamic content inside static web and html documents. You can also use `knitr::include_app` here in R code too but I find the html snippet below to work just as well inside a RMD file.
+
+<iframe width="560" height="315" src="https://youtube.com/embed/KMTWjPLEolc" frameborder="0" allowfullscreen></iframe>
+
+>NOTE: the iframe outputs do not show up currently in the rendered RStudio window. You need to `Open in Browser` in top left corner of popout viewer in RStudio.
+
+## Tables in a static RMD 
+
+It is possible to create interactive datatables uses the javascript library using htmlwidgets I think. Anyways, it works in a RMD file like so:
+
+Talk about this data here. 
+
+```{r echo = FALSE, warning= FALSE, message=FALSE}
+#DT library
+DT::datatable(ged.min)
+```
+
+## Including code in RMDs
+
+There are two main ways to do this currently, `child = <RMD>, results = "asis"` in the code chunk heading and using source in the chunk itself. Here I have included the resampling code below using source. Note the R script is in the `./R/` folder.
+
+```{r results = "asis"}
+source("R/resample_data_script.R", echo = TRUE)
+```
+<br>
+**Note** using `echo = TRUE` prints everything run and `include = TRUE` in the code snippet header prints the code iswell
+
+# Varying sites and grids  {.tabset}
+
+Here is a applied example of using dynamic tabs to represent a collection of plots. This can also be done with other R objects such as tables.
+
+```{r, echo = FALSE, warning= FALSE, message=FALSE, results = "asis"}
+my_data <- mtcars
+
+#original example
+p_list <- list()
+p1 <- qplot(mpg, disp, data = my_data[1:10,])
+p2 <- qplot(disp, mpg, data = my_data[10:20,])
+p1 <- ggplot(my_data[1:10,], aes(x = disp, y = mpg))+
+  geom_point()
+p_list[[1]] <- list(p1, "First Plot")
+p_list[[2]] <- list(p2, "Second Plot")
+
+#demo using data in repo
+p_list <- list()
+
+for (i in 1:length(levels(ged.min$site))){
+  ppt <- ggplot(ged.min[ged.min$site == levels(ged.min$site)[i] ,], 
+                    aes(y = siteR, x = year)) +
+        geom_point() +
+        geom_point() +
+        geom_line() +
+        facet_grid(site ~ grid.id) +
+        theme_bw() + 
+     theme(axis.text.x = element_text(angle = 90))
+ 
+    p_list[[i]] <- list(ppt, levels(ged.min$site)[i])
+    } #i
+
+#key to make this work is results = "asis" in code chunk
+for (i in seq_along(p_list)){
+ tmp <- p_list[[i]]
+ #change level of tabing here :)
+ cat("##", tmp[[2]], "\n")
+ print(tmp[1])
+ cat('\n\n')
+}
+
+```
+
+# Another randomisation {.tabset}
+
+Should be a difference and could be a good simple start to simulating differences between sites and grids given the observed differences in the sample data. This was originally what I thought would be helpful last time I bumped into you. Hopefully it helps. :)
+
+```{r, echo = FALSE, warning= FALSE, message=FALSE, results = "asis"}
+# run resampling R script
+#can look at how simple this is in source()
+#resample_data_script.R
+datresampled1 <- read_csv("data/random_ged_resample1.csv") %>%
+            mutate(site = factor(site))
+#demo using data in repo
+p_list <- list()
+
+for (i in 1:length(levels(datresampled1$site))){
+  ppt <- ggplot(datresampled1[datresampled1$site == levels(datresampled1$site)[i] ,], 
+                    aes(y = n, x = year)) +
+        geom_point() +
+        geom_point() +
+        geom_line() +
+        facet_grid(site ~ grid.id) +
+        theme_bw()+ 
+     theme(axis.text.x = element_text(angle = 90))
+ 
+    p_list[[i]] <- list(ppt, levels(datresampled1$site)[i])
+    } #i
+
+#key to make this work is results = "asis" in code chunk
+for (i in seq_along(p_list)){
+ tmp <- p_list[[i]]
+ #change level of tabing here :)
+ cat("##", tmp[[2]], "\n")
+ print(tmp[1])
+ cat('\n\n')
+}
+
+```

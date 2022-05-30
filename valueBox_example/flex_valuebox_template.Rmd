@@ -1,0 +1,73 @@
+---
+title: "Dashboard Value Boxes"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows    
+      navbar:
+        - { title: "About", href: "https://example.com/about", align: left }    
+    
+---
+
+```
+---
+title: "Navigation Bar"
+output: 
+  flexdashboard::flex_dashboard:
+    navbar:
+      - { title: "About", href: "https://example.com/about", align: left }
+      
+      
+---
+```
+
+You can use flexdashboard to publish groups of related data visualizations as a dashboard. A wide variety of components can be included in flexdashboard layouts, including:
+
+Interactive JavaScript data visualizations based on htmlwidgets.
+
+R graphical output including base, lattice, and grid graphics.
+
+Tabular data (with optional sorting, filtering, and paging).
+
+Value boxes for highlighting important summary data.
+
+Gauges for displaying values on a meter within a specified range.
+
+Text annotations of various kinds.
+
+Flexible options for component layout are available and dashboards with many components can be organized into multiple pages. The flexdashboard layout system also adapts itself intelligently for display on mobile devices.
+
+There are also several ways to add interactivity to flexdashboards. You can use htmlwidgets to add client-side JavaScript interactivity (data tips, panning, zooming, etc.) and Shiny to build fully custom interactions in R.
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+# £from bernds repo
+# these computing functions are only toy examples
+computeArticles = function(...) return(45)
+computeComments = function(...) return(126)
+computeSpam = function(...) return(15)
+```
+
+### Articles per Day
+
+```{r}
+articles = computeArticles()
+valueBox(articles, icon = "fa-pencil")
+```
+
+### Comments per Day
+
+```{r}
+comments = computeComments()
+valueBox(comments, icon = "fa-comments")
+```
+
+### Spam per Day
+
+```{r}
+spam = computeSpam()
+valueBox(
+  spam, icon = "fa-trash",
+  color = ifelse(spam > 10, "warning", "primary")
+)
+```

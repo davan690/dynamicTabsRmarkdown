@@ -19,6 +19,16 @@ ged.min <- read.csv("data/random_ged_resample.csv") %>%
             mutate(site = factor(site))
 
 # levels(ged.min$site)
+# The function library() will show every package and its version installed in our computer
+# However it is too much information
+# We can create a vector with the name of the packages to check later if a package is in it
+
+my_packages <- library()$results[,1]
+head(my_packages)
+# Again we could check if a library is loaded
+"dplyr" %in% tolower((.packages()))
+# We could list if a library is loaded
+tolower((.packages()))
 ```
 
 ```{r child = "dynamicTabs-mpd.Rmd"}
